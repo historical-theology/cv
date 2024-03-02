@@ -1,4 +1,4 @@
-\﻿# Dr. Corey Stephan's LaTeX Academic CV
+# Dr. Corey Stephan's LaTeX Academic CV
 ## Public Template Version
 *with all contact and reference information redacted*
 
