@@ -1,4 +1,4 @@
-﻿# Dr. Corey Stephan's LaTeX Academic CV
+\﻿# Dr. Corey Stephan's LaTeX Academic CV
 ## Public Template Version
 *with all contact and reference information redacted*
 
@@ -10,7 +10,7 @@ I release this code under the same license as Dr. Rieck, that is, the MIT Licens
 
 1. Compilable in TeXLive by default
 
-Dr. Bastian Rieck's original, beautiful LaTeX CV template requires multiple external fonts to be installed and the use of the fontspec package (which only works in LuaLaTeX) to load them. 
+Dr. Bastian Rieck's original, beautiful LaTeX CV template requires multiple external fonts to be installed and the use of the {fontspec} package (which only works in LuaLaTeX) to load them. 
 
 I intend for my own CV, however, to be compilable with any full TeXLive installation (on a *BSD or GNU/Linux operating system) via either LuaLaTeX or XeLaTeX as-is. 
 
