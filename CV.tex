@@ -1,0 +1,587 @@
+%!TEX TS-program = lualatex
+%!TEX encoding   = UTF-8 Unicode
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dr. Corey Stephan's CV
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dr. Bastian Rieck's LaTeX CV, on which I have based my own (by customizing his template, which is available here: https://github.com/Pseudomanifold/latex-cv), requires multiple external fonts to be installed and the use of the fontspec package to load them. I intend for my own CV, however, to be compilable with any full TeXLive installation (on GNU/Linux or *BSD) via LuaLaTeX or XeLaTeX as-is. Hence, for example, I strictly use the old-style and proportional variant of Dr. Edward Tufte's book font, ET Book, which is now included in TeXLive as the {ETbb} package. %
+
+% This is the simplest class to start with. You may want to change the
+% paper format or the standard font size.
+\documentclass[letterpaper,12pt]{article}
+
+\usepackage				[american]{babel}      			% American English justifications, hyphenations, etc.
+% \usepackage        	{fontspec}   					% Font selection
+\usepackage         	{fontawesome} 					% Symbols/icons
+\usepackage 			[oldstyle,proportional]{ETbb}	% ET Book, oldstyle and proportional
+
+% Change this depending on your own preferences. I personally prefer
+% nice ligatures and 'old style' numbers. Additionally, the way each
+% font is set up ensures that the layout is very uniform---mostly, I
+% achieve this effect using `MatchLowercase`.
+%
+% TODO: Make sure you select a font with small caps here, unless you
+% also change the section style. See below.
+\defaultfontfeatures{Ligatures=TeX}
+% \setmainfont[Renderer=Basic,Numbers={Proportional,OldStyle}]{ETBookOT} % Requires ET Book OT
+% \setsansfont[Scale=MatchLowercase]{Liberation Sans} % Requires Liberation Sans 
+% \setmonofont[Scale=MatchLowercase]{Liberation Mono} % Requires Liberation Mono
+
+\setlength{\parindent}   {0pt}  % No indentation
+\setlength{\marginparsep}{10pt} % Separation of margin notes
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document layout
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Permits a very precise adjustment of all the margins. Since a CV is
+% a document where *you* should exhibit *your* preferences, feel free
+% to adjust this the way you want.
+%
+% I am not aware of any good rules here.
+\usepackage{geometry}
+\geometry{
+  letterpaper,
+  textwidth      = 14.0cm,
+  textheight     = 25.0cm,
+  marginparwidth =  2.5cm
+}
+
+\setlength{\parindent}{0pt}     % No indentations for paragraphs
+\setlength{\skip\footins}{2cm}  % Reduced footer distance
+
+% A nice way to typeset proper ordinal superscripts
+\newcommand  {\rd}{\textsuperscript{\textup{rd}}\xspace}
+\newcommand  {\nd}{\textsuperscript{\textup{nd}}\xspace}
+\renewcommand{\th}{\textsuperscript{\textup{th}}\xspace}
+
+% To be used to indicate equal contributions of two or more authors in
+% a paper.
+\newcommand{\authorequal}{\kern-0.1em\textsuperscript{\dagger}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Margins macro
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% This permits you to put some comments into the margins of the
+% document; I borrowed this idea from Tufte's works, but in the
+% CV, I only use it to indicate durations.
+
+\usepackage{marginnote}
+\renewcommand*{\raggedleftmarginnote}{}
+\newcommand{\years}[1]{%
+  % Forces notes to appear on the left
+  {\reversemarginpar\strut\marginnote{{\small#1}}}%
+}
+
+
+% Required to support footnote references; has to come *after* the
+% `marginnote` package, though, because it redefines some things.
+\usepackage{scrextend}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Section style
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% This styles *all* the sections exactly the same: regular font, with
+% small caps.
+%
+% TODO: Adjust this if you change the font---otherwise, everything will
+% look super strange.
+\usepackage{sectsty}
+\allsectionsfont{\mdseries\scshape}
+
+% Typographical adjustments. If you have longer blocks of texts, such as
+% publications, in your CV, this will give the text a more natural look.
+%
+% TODO: Some people do not like this. If you are among them, just change
+% this or remove it
+\usepackage{microtype}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Colors
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% TODO: redefine this color if you do not like it.
+\usepackage[usenames,dvipsnames]{color}
+\definecolor{royal}{RGB}{83, 39, 115}		
+% Corey's favorite colo	r, i.e. the royal purple of his alma mater, the University of St. Thomas in Minnesota
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PDF setup
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[
+  bookmarks,  % Create PDF bookmarks
+  colorlinks, % Use the link colour from above
+  breaklinks  % Break links in the text
+]{hyperref}
+
+\hypersetup{%
+  urlcolor=royal,
+  pdfauthor={Corey J. Stephan, Ph.D.},                  % TODO: Add your own name here
+  pdftitle={Corey J. Stephan, Ph.D.: Curriculum vitae}, % TODO: Add your own name here
+  pdfproducer={}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Penalties
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\clubpenalty         = 10000
+\displaywidowpenalty = 10000
+\widowpenalty        = 10000
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Corey Stephan's specialty packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[useregional]{datetime2} 			% Adds the date automatically with \today
+\usepackage[defaultlines=100,all]{nowidow}		% Automatically removes orphaned and widowed lines
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Main document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Corey's header, minimalist but closer to history's norms 
+
+% Remember to keep the following up-to-date in private documents but excluded from public-facing websites, e.g. GitHub:
+% Source code URL
+% Telephone number
+% Professional email address
+
+\begin{document}
+{
+\begin{center}
+  \Huge \textsc{Corey J. Stephan, Ph.D.} \\
+  
+  \normalsize \emph{Curriculum Vitae}
+  \footnote{My source code for this \LaTeX\space document is available at \href{https:www.github.com/historical-theology/cv}{github.com/historical-theology/cv}.} \\ 														
+  \today
+\end{center}
+  \begin{center}
+    \normalsize
+      \faPhone\space+1 111 111 1111 \space 															
+      \enspace\faEnvelope\space{\href{mailto:redacted@github.com}{redacted@github.com}} \space
+      \enspace\faHome\space{\href{https://www.mysite.com}{mysite.com}}	
+  \end{center}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section*{Research interests}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Patristics \textbullet{} Byzantine \& Medieval Theology \textbullet{} Christology \textbullet{} Digital Humanities
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Education}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\years{2022}%
+%
+\textbf{Ph.D.}\ in Religious Studies \\
+Historical Theology \\
+Department of Theology, Marquette University, Milwaukee, Wisconsin \\ [.3cm]
+\years{2017}%
+%
+\textbf{M.T.S.}\ \\
+Boston College School of Theology and Ministry, Chestnut Hill, Massachussetts \\ [.3cm]
+\years{2015}%
+%
+\textbf{B.A.} \emph{summa cum laude} \\
+Majors: Classical Languages and Theology \\ 
+Minor: Spanish \\
+University of St. Thomas, St. Paul, Minnesota
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Appointment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\years{2022--}%
+%
+Assistant Professor of Theology and Fellow of the Core \\
+University of St. Thomas, Houston, Texas
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Publications}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \subsection*{Book}
+
+% \years{Under review}%
+% \emph{Maximus the Confessor's Thomistic Legacy} \\
+% Pontifical Institute of Mediaeval Studies: Toronto
+
+\subsection*{Articles and Book Chapters}
+
+\years{Forthcoming}%
+%
+% ``Teach History and Languages with a Strategy Computer Game: 0 A.D. in the Classroom,'' Programming Historian, Spring 2024 \\ [.3cm]
+%
+``Thomistic Maximianism: A Theology for Catholic and Orthodox Re-communion,'' in \emph{Maximus in the Latin West} [Title Pending], edited by Kevin Clarke and Thomas Cattoi (Brill: Leiden). \\ [.3cm]
+%
+\years{2021}%
+%
+{\href{https://stpaulcenter.com/05-nv-19-4-stephan/}{``Catechisms, Communion, and Latin Scholastic Reception of Byzantine Thought: St. John Damascene's \emph{De fide orthodoxa} in St. Bonaventure's \emph{Breviloquium}.''} Nova et Vetera, vol. 19, 4.
+
+\subsection*{Book Reviews}
+
+\years{2021}%
+%
+``{\href{https://freebsdfoundation.org/wp-content/uploads/2021/08/JulyAugust_book_review.pdf}{Michael W. Lucas's \emph{Absolute FreeBSD} (3rd Edition): A Scholar's Review}.'' FreeBSD Journal, July/August. \\ [.3cm]
+%
+{\href{https://thomistica.net/book-reviews/augustine}{Kantzer Komline, Han-Luen. \emph{Augustine on the Will: A Theological Account}}. Thomistica, August 14. \\ [.3cm]
+%
+\years{2018}%
+%
+{\href{https://journals.sagepub.com/doi/full/10.1177/0040563918786811b}{Blackwell, Ben C. \emph{ Christosis: Engaging Paul's Soteriology with His Patristic Interpreters}}. Theological Studies, vol. 79, 3: 683--84. \\ [.3cm]
+%
+{\href{https://journals.sagepub.com/doi/full/10.1177/0040563918786811b}{Stock, Brian. \emph{The Integrated Self: Augustine, The Bible, and Ancient Thought}}. Theological Studies, vol. 79, 2: 435--37. % \\ [.3cm]
+
+\subsection*{Other Publications}
+
+\years{2023}%
+% %
+``{\href{https://freebsdfoundation.org/wp-content/uploads/2023/08/stephan_conference_report.pdf}{C is to BSD what Latin is to US: A Theologian's Report of His Trip to Present at BSDCan 2023},'' FreeBSD Journal, July/August. \\ [.3cm]
+\years{2021}%
+% %
+``{\href{https://issue.freebsdfoundation.org/publication/?i=698457&ver=html5&p=28}{“FreeBSD for the Writing Scholar},'' FreeBSD Journal, January/February. \\ [.3cm]
+% 
+\years{2018}%
+% %
+``Meditations on the Lord's Prayer for Good Friday,'' Vulgate Media, March 28. \\ [.3cm]
+%
+``Hans Urs von Balthasar and Praying with the Church Fathers,'' Vulgate Media, March 1. % \\ [.3cm]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Awards, Grants, and Fellowships}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\years{2024}%
+%
+Conference Travel Grant, Faculty Development Committee, University of St. Thomas (Houston) \\ [.3cm]
+\years{2023}% 
+%
+Conference Travel Grant, Faculty Development Committee, University of St. Thomas (Houston) \\ [.3cm]
+\years{2021}%
+%
+Hank Fellowship in the Catholic Intellectual Tradition, Hank Center for the Catholic Intellectual Heritage, Loyola University Chicago \\ [.3cm]
+%
+North American Patristic Society's Dissertation Progress Grant \\ [.3cm]
+%
+ULINE Cybersecurity Training Opportunity Grant, Center for Cyber Security \& Awareness, Marquette University \\ [.3cm]
+%
+\years{2019}%
+%
+Graduate Student Research Travel Award, Marquette University \\ [.3cm]
+%
+\years{2018}%
+%
+Outstanding Student Paper Prize, 2018 Annual Meeting of the North American Patristics Society \\                                                                                                 ``Integrated Selves in the Image of the Trinity: The Mundicordes in Book 8 of St. Augustine's \emph{De Trinitate}'' \\ [.3cm]
+%
+Graduate Student Research Travel Award, Marquette University \\ [.3cm]
+%
+\years{2017--2022}%
+%
+Teaching Assistantship, Marquette University \\ [.3cm]
+%
+\years{2016}%
+%
+Individual Conference Grant, Boston College School of Theology and Ministry, Student Forum \\ [.3cm]
+%
+Individual Conference Grant, Boston College Graduate Student Association \\ [.3cm]
+\years{2015--2017}%
+%
+Dean's Fellowship, Boston College School of Theology and Ministry \\ [.3cm]
+%
+\years{2015}%
+%
+Partnership-in-Learning Grant, University of St. Thomas (St. Paul) \\
+Advisor: Mark DelCogliano, Ph.D. \\ [.3cm]
+%
+\years{2014}%
+%
+Collaborative Inquiry Grant, University of St. Thomas (St. Paul) \\
+Advisor: Mark McInroy, Ph.D. \\ [.3cm]
+%
+Theta Alpha Kappa's Undergraduate Achievement Award \\ [.3cm]
+%
+\years{2011--2015 \\ All Semesters}%
+%
+Dean's List, University of St. Thomas (St. Paul)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Conference Activity}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{Session Led}
+
+\years{2022}%
+%
+\emph{Maximus the Confessor in the Medieval Latin West}, The 2022 Annual Meeting of the North American Patristics Society, Hyatt Regency of Chicago, Chicago, Illinois, May 28\\
+Paper Presented: ``Thomistic Maximianism: A Theology for Catholic and Orthodox Re-communion'' \\
+Panelists: Jonathan Bieler, Vladimir Cvetkovic, and Benjamin Heidgerken \\
+Respondent: Thomas Cattoi
+
+\subsection*{Papers Presented}
+
+\years{2024}%
+%
+``Harmonizing Patrology in the Earliest Greek Scholasticism: Maximus the Confessor and John Damascene on Dionysius's Theory of Christ's `Theandric Operation,''' International Conference on Patristic Studies, Oxford University, Oxford, UK, August [Schedule Pending] \\ [.3cm]
+%
+\years{2023}%
+%
+``How to Incorporate Real-world Data into the Scholarship-Aware and Libre Computer Game 0 A.D. for Ancient History and Language Instruction,'' Digital Humanities in Biblical, Early Jewish, and Christian Studies Unit, 2023 Annual Meeting of the Society of Biblical Literature, San Antonio, Texas, November 19  \\ [.3cm]
+%
+``Maximus the Confessor and John Damascene on Dionysius's Theory of Christ's `Theandric Operation': A Case Study in Patristic Devotion and Polemics in the Earliest Greek Scholasticism,'' Development of Early Christian Theology Unit, 2023 Annual Meeting of the Society of Biblical Literature, San Antonio, Texas, November 18  \\ [.3cm]
+%
+``John Damascene as Maximus the Confessor's Student in \emph{De fide orthodoxa} 58 and 59,'' 2023 Annual Meeting of the Canadian Society of Patristic Studies / Association canadienne des études patristiques, 2023 Congress of the Humanities and Social Sciences, York University, Toronto, Ontario, May 28  \\ [.3cm]
+%
+``BSD for Researching, Writing, and Teaching in the Liberal Arts,'' BSDCan 2023, University of Ottawa, Ottawa, Ontario, May 20  \\ [.3cm]
+%
+\years{2022}%
+%
+``A Move Toward the Pervasive Maximianism of the Tertia Pars: Nicetas of Heraclea's Quotations of Maximus the Confessor in Aquinas's \emph{Catena in Lucam},'' Thomas Aquinas II: The Catena aurea, 57th International Conference on Medieval Studies, Western Michigan University, Kalamazoo, Michigan (Virtual), May 12 \\ [.3cm]
+%
+``Thomistic Maximianism: A Theology for Catholic and Orthodox Re-communion,'' St. Thomas Aquinas as Spiritual Teacher, Ave Maria University, Ave Maria, Florida, February 10 \\ [.3cm]
+%
+\years{2021}%
+%
+```Et superiorum et posteriorum': Difficulties Dating St. Augustine's \emph{De consensu evangelistarum},'' The 2021 Annual Meeting of the North American Patristics Society, Hyatt Regency of Chicago, Chicago, Illinois (Virtual), May 26 \\ [.3cm]
+%
+```The Power to Save Perfectly': John Damascene's \emph{De fide orthodoxa} 58 \& 59 as Mediators of Maximian Soteriology,'' Hope and Death, Ave Maria University, Ave Maria, Florida (Virtual), February 11 \\ [.3cm]
+%
+``FOSS for the Professional Historian: Optimizing a Multisource Historical Research Workflow in BSD or GNU/Linux with a Tiling Window Manager and Manuscripts Galore,'' Free and Open Source Software Developers European Meeting (FOSDEM) 2021, Brussels, Belgium (Virtual), February 6 \\ [.3cm]
+%
+\years{2020}%
+%
+```Medium tenens': \emph{Summa Theologica} III, Q. 2, A. 6 \& the Transcendence of Orthodoxy,'' Aquinas and the Crisis of Christology, Ave Maria University, Ave Maria, Florida, February 8 \\ [.3cm]
+%
+\years{2019}%
+%
+```Puer Jesus proficiebat': Aquinas's Disagreement with the Damascene on the Hypostatic Union and Soteriology in Luke 2:52,'' Aquinas the Biblical Theologian, Ave Maria University, Ave Maria, Florida, February 9 \\ [.3cm]
+%
+\years{2018}%
+%
+``Integrated Selves in the Image of the Trinity: The \emph{Mundicordes} in Book 8 of St. Augustine's \emph{De Trinitate},'' The 2018 Annual Meeting of the North American Patristics Society, Pre-Dissertation Research Workshop, Hyatt Regency Chicago, Chicago, Illinois, May 26 \\
+\hfill\emph{Outstanding Student Paper Prize Recipient} \\ [.3cm]
+%
+``St. John Damascene's \emph{De Fide Orthodoxa} in St. Thomas Aquinas's \emph{De Unione Verbi Incarnati},'' Thomas Aquinas and the Greek Fathers, Ave Maria University, Ave Maria, Florida, January 25 \\ [.3cm]
+%
+\years{2017}%
+%
+```Not One I\=ota of the Law Will Pass' or be Changed: St. John Damascene's \emph{De Hymno Trisagio} (Chapters 1–7) and Liturgical Orthodoxy,” The Pappas Patristics Institute's 13th Annual Archbishop Iakovos Patristics Graduate Student Conference, Holy Cross Greek Orthodox School of Theology, Brookline, Massachusetts, March 4 \\ [.3cm]
+%
+``The Holy Mass as Wholly Beautiful: Transformational Aesthetics in the Liturgical Theology of Dom Prosper Guéranger,'' Lumen et Vita Fall Symposium 2016, Boston College School of Theology and Ministry, Chestnut Hill, Massachusetts, November 10 \\ [.3cm]
+%
+\years{2016}%
+%
+``Different Biblical Versions Show Distinct Christological Truths: St. Jerome's \emph{Commentary on Isaiah} and the Servant Songs,'' Patristic, Medieval, \& Renaissance Conference 2016, Villanova University, Radnor, Pennsylvania, October 15 \\ [.3cm]
+%
+``St. John Damascene's \emph{De Fide Orthodoxa} in St. Bonaventure's \emph{Breviloquium}: A Case Study in Medieval Reception of Byzantine Thought,'' Florovsky Symposium 2016, Holy Cross Greek Orthodox School of Theology, Brookline, Massachusetts, May 7 \\ [.3cm]
+%
+``Tongues Can Save or Damn: St. Gregory the Great's \emph{Fortieth Gospel Homily} and the Priority of Moral Exegesis,'' The Pappas Patristics Institute's 12th Annual Archbishop Iakovos Patristics Graduate Student Conference, Holy Cross Greek Orthodox School of Theology, Brookline, Massachusetts, March 5
+
+\subsection*{Service as Respondent}
+
+\years{2017}%
+%
+Porcu, Zachary. ``The Letter Kills but the Spirit Gives Life: Challenging Our Hermeneutical Presuppositions via Origen's Biblical Exegesis,'' The Pappas Patristics Institute's 13th Annual Archbishop Iakovos Patristics Graduate Student Conference, Holy Cross Greek Orthodox School of Theology, Brookline, Massachusetts, March 3 \\ [.3cm]
+%
+\years{2016}%
+%
+Jenks, Sarah. ``Typology in the Hymns of St. John of Damascus: A Case of Patristic Biblical Interpretation,'' The Pappas Patristics Institute's 12th Annual Archbishop Iakovos Patristics Graduate Student Conference, Holy Cross Greek Orthodox School of Theology, Brookline, Massachusetts, March 5
+
+\subsection*{Undergraduate}
+
+\years{2014}%
+%
+``John of Damascus on the Resurrection: The Eschatology of the Last Church Father,'' Theology Major Capstone, University of St. Thomas, St. Paul, Minnesota, May 5
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Invited and Media Talks}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\years{2023}%
+%
+``Software Freedom, BSD Unix, and the Liberal Arts: An Unconventional Conversation with Dr. Corey Stephan,'' Celts Computing Club, University of St. Thomas, Houston, Texas, October 24 \\ [.3cm]
+%
+\years{2022}%
+%
+``\href{https://odysee.com/@DistroTube:2/theology-professor-and-free-software:b}{Theology Professor and Free Software Advocate, Corey Stephan Ph.D.},'' DistroTube, October 20 \\ [.3cm]
+%
+\years{2021}%
+%
+``The Writing Scholar’s Guide to FreeBSD,'' FreeBSD Friday, FreeBSD Foundation, October 22 \\ [.3cm]
+%
+``The Writing Scholar’s Guide to *BSD,'' Chicago BSD Users Group, October 12 \\ [.3cm]
+%
+\years{2017}%
+%
+``Roman Catholic Liturgy After Trent,'' Reformations Class (RS 423), Edgewood College, Madison, Wisconsin, November 28
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Teaching Experience}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{University of St. Thomas, Houston, Texas}
+
+\href{https://www.coreystephan.com/teaching/return-to-god/}{The Return to God} \\
+Developer and Instructor of Record \\
+Fall 2024, Fall 2022 \\ [.3cm]
+%
+\href{https://www.coreystephan.com/teaching/greek/}{Introduction to Classical Greek II} \\
+Instructor of Record \\
+Spring 2023 \\ [.3cm]
+%
+\href{https://www.coreystephan.com/teaching/faith-reason-revelation/}{Faith, Reason, and Revelation} \\
+Instructor of Record \\
+Fall 2024, Summer 2024, Spring 2024, Fall 2023, Summer 2023, Spring 2023, Fall 2022
+
+\subsection*{Marquette University, Milwaukee, Wisconsin}
+
+Methods of Inquiry: Tolkien \\
+Breakout Leader \\
+Spring 2022 \\ [.3cm]
+%
+Methods of Inquiry: Creativity \\
+Breakout Leader \\
+Fall 2021
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Academic Service}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\years{2023}%
+%
+Peer Reviewer, Association for Computers and the Humanities 2023 Conference \\ [.3cm]
+%
+\years{2012--2015}%
+%
+President, Theology Club, University of St. Thomas, St. Paul, Minnesota
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Other Professional Experience}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\years{2021}%
+%
+Teaching Assistant to Mark Johnson, Ph.D., Marquette University, Milwaukee, Wisconsin \\ [.3cm]
+%
+\years{2020}%
+%
+Teaching Assistant to Jeanne-Nicole Mellon Saint-Laurent, Ph.D., Marquette University, Milwaukee, Wisconsin \\ [.3cm]
+%
+Teaching Assistant to Rev. Julian Hills, Th.D., Marquette University, Milwaukee, Wisconsin \\ [.3cm]
+%
+\years{2019}%
+%
+Teaching Assistant to Rev. Fr. Joseph Ogbonnaya, Ph.D., Marquette University, Milwaukee, Wisconsin \\ [.3cm]
+%
+Letter and Spirit Institute, St. Paul Center for Biblical Theology, Steubenville, Ohio \\ [.3cm]
+%
+\years{2018}%
+%
+Teaching Assistant to Jeanne-Nicole Mellon Saint-Laurent, Ph.D., Marquette University, Milwaukee, Wisconsin \\ [.3cm]
+%
+Letter and Spirit Institute, St. Paul Center for Biblical Theology, Steubenville, Ohio \\ [.3cm]
+%
+\years{2017}%
+%
+Teaching Assistant to Alexandré Martins, Ph.D., Marquette University, Milwaukee, Wisconsin \\ [.3cm]
+%
+\years{2015–-2016}%
+%
+Research Assistant to Fr. Brian Dunkle, S.J., Ph.D., Boston College School of Theology and Ministry, Chestnut Hill, Massachusetts \\ [.3cm]
+%
+\years{2013--2016}%
+%
+Teacher, Train Your Brain Youth Summer Enrichment Program, Marshall School, Duluth, Minnesota \\ [.3cm]
+%
+\years{2013–-2015}%
+%
+Tutor, Theology Department, University of St. Thomas, St. Paul, Minnesota
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Ministry}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\years{2023--}%
+%
+Lector, St. Cecilia Catholic Church, Houston, Texas \\ [.3cm]
+%
+\years{2014–-2015}%
+Volunteer Chair, Liturgical Choir, University of St. Thomas, St. Paul, Minnesota \\ [.3cm]
+%
+\years{2013–-2015}% 
+Singer, Schola Cantorum, University of St. Thomas, St. Paul, Minnesota \\ [.3cm]
+%
+\years{2011-–2015}%
+Singer, Liturgical Choir, University of St. Thomas, St. Paul, Minnesota \\ [.3cm]
+%
+\years{2010–-2012}%
+Junior Counselor, Camp Survive, Diocese of Duluth, Virginia, Minnesota \\ [.3cm]
+%
+\years{2006–-2011}%
+Lector, Cathedral of Our Lady of the Rosary, Duluth, Minnesota
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Language Skills}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{Greek} \\ Classical, Koine, and Byzantine \\ Advanced reading \\ [.3cm]
+%
+\textbf{Latin} \\ Classical, Medieval, and Ecclesial \\ Advanced reading; some writing and speaking \\ [.3cm]
+%
+\textbf{Spanish} \\ Advanced reading, writing, and speaking \\ [.3cm]
+%
+\textbf{German} \\ Advanced reading \\
+Harvard Divinity School's German Reading Exam, High Pass, May 2017 \\ [.3cm]
+%
+\textbf{French} \\ Intermediate reading \\ [.3cm]
+%
+\textbf{Italian} \\ Intermediate reading \\ [.3cm]
+%
+\textbf{Syriac} \\ Elementary reading
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Select Technical Skills}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+GNU/Linux, OpenBSD, and FreeBSD operating systems \\ [.3cm]
+%
+Cybersecurity and networking \\ [.3cm]
+%
+\LaTeX\ typesetting language \\ [.3cm]
+%
+Amateur Radio, FDC vanity callsign N7CJS
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Professional Memberships}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\href{https://www.patristics.org/}{North American Patristics Society} (NAPS), 2017-- \\ [.3cm]
+%
+\href{https://www.sbl-site.org/default.aspx}{Society of Biblical Literature} (SBL), 2017-- \\ [.3cm]
+%
+\href{https://ach.org/}{Association for Computers and the Humanities} (ACH), 2021-- fc
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{References}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Reference Reference, Ph.D. \\
+Professor and Chairman, Department of Department, University University \\
+1111 Street Street, City, State 11111 \\
+\href{mailto:redacted@github.com}{redacted@github.com} / 111-111-1111 \\ [.3cm]
+%
+Reference Reference 2, D.Phil. \\
+Professor and Chairman, Department of Department, University University \\
+1111 Street Street, City, State 11111 \\
+\href{mailto:redacted@github.com}{redacted@github.com} / 111-111-1111 \\ [.3cm]
+%
+Reference Reference 3, Th.D. \\
+Professor and Chairman, Department of Department, University University \\
+1111 Street Street, City, State 11111 \\
+\href{mailto:redacted@github.com}{redacted@github.com} / 111-111-1111 \\
+
+\end{document}
