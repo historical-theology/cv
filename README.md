@@ -21,3 +21,7 @@ Hence, for example, I strictly use the old-style and proportional variant of Dr.
 3. Denial of *all* orphaned and widowed lines with the (admittedly draconian) command `\usepackage[defaultlines=100,all]{nowidow}`
 
 4. Overhauled header, including automatic dating for the document with `\usepackage[useregional]{datetime2}` in the preamble and, subsequently, the `\today` command in the header itself
+
+## Sample
+
+CV.pdf is available in this repository as a sample of LuaLaTeX output with this template.
