@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022/Debian) (preloaded format=xelatex 2024.2.25)  4 MAR 2024 11:26
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022/Debian) (preloaded format=xelatex 2024.2.25)  4 MAR 2024 11:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -648,11 +648,6 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 161.
 LaTeX Font Info:    Font shape `T1/ETbb-OsF/regular/n' will be
 (Font)              scaled to size 7.0pt on input line 161.
-
-Underfull \hbox (badness 4686) in paragraph at lines 161--161
-[][][]\T1/ETbb-OsF/regular/n/10 My source code for the pub-lic tem-plate of thi
-s L[]T[]X doc-u-ment is avail-able at
- []
 
 
 LaTeX Font Warning: Font shape `TU/FontAwesome(0)/regular/n' undefined
