@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.15.0 (TeX Live 2022/Debian)  (format=lualatex 2024.2.25)  6 MAR 2024 15:55
+This is LuaHBTeX, Version 1.15.0 (TeX Live 2022/Debian)  (format=lualatex 2024.2.25)  6 MAR 2024 15:59
  restricted system commands enabled.
 **CV.tex
 (./CV.tex
@@ -1179,7 +1179,7 @@ texlive/texmf-dist/fonts/opentype/public/fontawesome/FontAwesome.otf>{/usr/share
 mf-dist/fonts/type1/public/etbb/ETbb-Bold.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/etbb/ETbb-Italic.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 public/etbb/ETbb-Regular.pfb>
-Output written on CV.pdf (8 pages, 99802 bytes).
+Output written on CV.pdf (8 pages, 99792 bytes).
 
 PDF statistics: 119 PDF objects out of 1000 (max. 8388607)
  101 compressed objects within 2 object streams
