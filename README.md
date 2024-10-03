@@ -14,7 +14,7 @@ Dr. Bastian Rieck's original, beautiful LaTeX CV template requires multiple exte
 
 I intend for my own CV, however, to be compilable with any full TeXLive installation (on a *BSD or GNU/Linux operating system) via either LuaLaTeX or XeLaTeX as-is. 
 
-Hence, for example, I strictly use the old-style and proportional variant of Dr. Edward Tufte's book font, [ET Book](https://edwardtufte.github.io/et-book/), which is included in TeXLive within the {ETbb} package. (This also happens to be my longtime favorite font.)
+Hence, for example, I strictly use the old-style and proportional variant of Dr. Edward Tufte's book font, [ET Book](https://edwardtufte.github.io/et-book/), which is included in TeXLive within the {ETbb} package. (This also happens to be my longtime favorite typeface.)
 
 2. Overall closer alignment with Dr. Karen Kelsky’s [Rules of the Academic CV](https://theprofessorisin.com/2016/08/19/dr-karens-rules-of-the-academic-cv/), as well as the expected norms for curricula vitae in the fields of history and theology
 
