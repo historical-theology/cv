@@ -24,4 +24,4 @@ Hence, for example, I strictly use the old-style and proportional variant of Dr.
 
 ## Sample
 
-CV.pdf is available in this repository as a sample of LuaLaTeX output with this template.
+[CV.pdf](CV.pdf) is available in this repository as a sample of XeLaTeX or LuaLaTeX output with this template.
